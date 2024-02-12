@@ -71,7 +71,7 @@
 }
 
 .headerSearchText {
-  color: lightgray;
+  color: gray;
 }
 
 .date {
@@ -99,12 +99,13 @@
   gap: 10px;
   font-size: 12px;
   color: black;
+  border: 1px solid #0071c2;
 }
 .optionCounterButton {
   width: 30px;
   height: 30px;
-  border: 1px solid #0071c2;
   cursor: pointer;
+  border: none;
   background-color: #fff;
 }
 .optionCounterButton:disabled {

@@ -20,8 +20,12 @@
 
 .navButton {
   margin-left: 20px;
-  bottom: none;
+  border: none;
   padding: 5px 10px;
-  color: #003580;
+  color: #2362bb;
   cursor: pointer;
+  border-radius: 2px;
+}
+.navButton:hover{
+  background-color: #d8e8fd;
 }
