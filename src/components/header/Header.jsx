@@ -6,6 +6,7 @@ import {
   faCar,
   faPerson,
   faPlane,
+  faStar,
   faTaxi,
 } from "@fortawesome/free-solid-svg-icons"
 import { faCalendarDays } from "@fortawesome/free-regular-svg-icons"
@@ -14,9 +15,11 @@ import { DateRange } from "react-date-range"
 import "react-date-range/dist/styles.css" // main css file
 import "react-date-range/dist/theme/default.css" // theme css file
 import { format } from "date-fns"
+import { useNavigate } from "react-router-dom"
 
 const Header = ({ type }) => {
   const [openDate, setOpenDate] = useState(false)
+  const [destination, setDestination] = useState("")
   const [date, setDate] = useState([
     {
       startDate: new Date(),
@@ -39,6 +42,10 @@ const Header = ({ type }) => {
       }
     })
   }
+  const navigate = useNavigate()
+  const handleSearch = () => {
+    navigate("/hotels", { state: { destination, date, options } })
+  }
   return (
     <div className="header">
       <div
@@ -59,7 +66,7 @@ const Header = ({ type }) => {
             <span>Car rentals</span>
           </div>
           <div className="headerListItem">
-            <FontAwesomeIcon icon={faBed} />
+            <FontAwesomeIcon icon={faStar} />
             <span>Attractions</span>
           </div>
           <div className="headerListItem">
@@ -81,6 +88,7 @@ const Header = ({ type }) => {
                   type="text"
                   placeholder="Where are yuo going"
                   className="headerSearchInput"
+                  onChange={(e) => setDestination(e.target.value)}
                 />
               </div>
               <div className="headerSearchItem">
@@ -90,11 +98,12 @@ const Header = ({ type }) => {
                   className="headerSearchText">{`${format(
                   date[0].startDate,
                   "MM/dd/yyyy"
-                )} to ${format(date[0].startDate, "MM/dd/yyyy")}`}</span>
+                )} to ${format(date[0].endDate, "MM/dd/yyyy")}`}</span>
                 {openDate ? (
                   <DateRange
                     editableDateInputs={true}
                     onChange={(item) => setDate([item.selection])}
+                    minDate={new Date()}
                     moveRangeOnFirstSelection={false}
                     ranges={date}
                     className="date"
@@ -169,7 +178,9 @@ const Header = ({ type }) => {
                 ) : null}
               </div>
               <div className="headerSearchItem">
-                <button className="headerBtn">Search</button>{" "}
+                <button className="headerBtn" onClick={handleSearch}>
+                  Search
+                </button>{" "}
               </div>
             </div>
           </>
