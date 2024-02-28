@@ -45,7 +45,7 @@ const Footer = () => {
         </ul>
       </div>
       <div className="fText">
-        Copyright © 2024. Thanks Booking for the idea, I nabbed you hahah
+        Copyright © 2069. Thanks Booking for the idea, I nabbed you hahah
       </div>
     </div>
   )
