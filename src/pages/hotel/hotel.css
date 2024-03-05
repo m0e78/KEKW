@@ -126,12 +126,14 @@
   top: 20px;
   right: 30px;
   font-size: 30px;
-  color: #c6081d;
+  color: black;
   cursor: pointer;
   border-radius: 100%;
   border: rgb(29, 29, 29) solid 1px;
 }
-
+.close :hover {
+  color: #c6081d;
+}
 .arrow {
   margin: 20px;
   font-size: 50px;
