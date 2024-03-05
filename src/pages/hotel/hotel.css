@@ -126,7 +126,8 @@
   top: 20px;
   right: 30px;
   font-size: 30px;
-  color: black;
+  color: lightgray;
+  background-color: black;
   cursor: pointer;
   border-radius: 100%;
   border: rgb(29, 29, 29) solid 1px;
