@@ -1,6 +1,9 @@
 import "./featuredProperties.css"
+import useFetch from "../../hooks/useFetch"
 
 const FeaturedProperties = () => {
+  const { data, loading, error } = useFetch("/api/hotels/countByType")
+  console.log("featprop", data)
   return (
     <div className="fp">
       <div className="fpItem">
