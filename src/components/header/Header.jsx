@@ -180,7 +180,7 @@ const Header = ({ type }) => {
               <div className="headerSearchItem">
                 <button className="headerBtn" onClick={handleSearch}>
                   Search
-                </button>{" "}
+                </button>
               </div>
             </div>
           </>
