@@ -16,9 +16,7 @@ const List = () => {
   const [options, setOptions] = useState(location.state.options)
   const [min, setMin] = useState(undefined)
   const [max, setMax] = useState(undefined)
-  const { data, loading, error, refetch } = useFetch(
-    `/api/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
-  )
+  const { data, loading, error, refetch } = useFetch(`/api/hotels?city=${destination.toLowerCase()}&min=${min || 0}&max=${ max || 999 }`)
   const handleClick = () => {
     refetch()
   }
