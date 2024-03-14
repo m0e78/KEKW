@@ -17,10 +17,13 @@ import "react-date-range/dist/theme/default.css" // theme css file
 import { format } from "date-fns"
 import { useNavigate } from "react-router-dom"
 import { SearchContext } from "../../context/SearchContext"
+import { AuthContext } from "../../context/AuthContext"
 
 const Header = ({ type }) => {
   const [openDate, setOpenDate] = useState(false)
+
   const [destination, setDestination] = useState("")
+
   const [dates, setDates] = useState([
     {
       startDate: new Date(),
@@ -30,11 +33,13 @@ const Header = ({ type }) => {
   ])
 
   const [openOptions, setOpenOptions] = useState(false)
+
   const [options, setOptions] = useState({
     adult: 1,
     children: 0,
     room: 1,
   })
+
   const handleOption = (name, operation) => {
     setOptions((prev) => {
       return {
@@ -43,8 +48,13 @@ const Header = ({ type }) => {
       }
     })
   }
+
   const { dispatch } = useContext(SearchContext)
+
   const navigate = useNavigate()
+
+  const { user } = useContext(AuthContext)
+
   const handleSearch = () => {
     dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } })
     navigate("/hotels", { state: { destination, dates, options } })
@@ -84,7 +94,9 @@ const Header = ({ type }) => {
             <p className="headerDesc">
               Search deals on hotels, homes, and much more...
             </p>
-            <button className="headerBtn">Sign in / Register</button>
+            {!user ? (
+              <button className="headerBtn">Sign in / Register</button>
+            ) : null}
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
