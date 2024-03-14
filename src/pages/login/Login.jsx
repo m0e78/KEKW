@@ -2,6 +2,7 @@ import { useContext, useState } from "react"
 import "./login.css"
 import { AuthContext } from "../../context/AuthContext"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -9,6 +10,7 @@ const Login = () => {
     passwordusername: undefined,
   })
   const { user, loading, error, dispatch } = useContext(AuthContext)
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
     setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }))
@@ -23,6 +25,7 @@ const Login = () => {
         credentials
       )
       dispatch({ type: "LOGIN_SUCCESS", payload: response.data })
+      navigate("/")
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data })
     }
@@ -45,7 +48,7 @@ const Login = () => {
           onChange={handleChange}
           className="lInput"
         />
-        <button onClick={handleClick} className="lButton">
+        <button disabled={loading} onClick={handleClick} className="lButton">
           Login
         </button>
         {error ? <span>{error.message}</span> : null}

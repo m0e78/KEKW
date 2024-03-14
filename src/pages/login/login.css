@@ -26,11 +26,10 @@
   cursor: pointer;
   border-radius: 5px;
 }
-span {
+.lContainer > span {
   color: #d4111e;
   font-weight: bold;
   font-family: Helvetica, Arial, sans-serif;
-
   font-size: 13px;
   text-align: center;
 }
