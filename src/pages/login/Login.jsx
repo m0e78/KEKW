@@ -20,10 +20,7 @@ const Login = () => {
     e.preventDefault()
     dispatch({ type: "LOGIN_START" })
     try {
-      const response = await axios.post(
-        "http://localhost:8800/api/auth/login",
-        credentials
-      )
+      const response = await axios.post("api/auth/login", credentials)
       dispatch({ type: "LOGIN_SUCCESS", payload: response.data })
       navigate("/")
     } catch (err) {

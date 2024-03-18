@@ -22,7 +22,7 @@ const Hotel = () => {
   console.log(id)
   const [slideNumber, setSlideNumber] = useState(0)
   const [open, setOpen] = useState(false)
-  const { data, loading, error } = useFetch(`/api/hotels/find/${id}`)
+  const { data, loading, error } = useFetch(`api/hotels/find/${id}`)
 
   const { dates,options } = useContext(SearchContext)
   console.log(dates)
