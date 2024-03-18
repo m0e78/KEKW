@@ -59,7 +59,7 @@ const Reserve = ({ setOpen, hotelId }) => {
         <span>Select you rrooms:</span>
         {data.map((item) => (
           <div className="rItem" key={item._id}>
-            <div className="rItemInfo">
+            <div className="rInfo">
               <div className="rTitle">{item.title}</div>
               <div className="rDesc">{item.desc}</div>
               <div className="rMax">
@@ -67,17 +67,19 @@ const Reserve = ({ setOpen, hotelId }) => {
               </div>
               <div className="rPrice">{item.price}</div>
             </div>
-            {item.roomNumbers.map((roomNumber) => (
-              <div className="room" key={roomNumber._id}>
-                <label>{roomNumber.number}</label>
-                <input
-                  type="checkbox"
-                  value={roomNumber._id}
-                  onChange={handleSelect}
-                  disabled={!isAvailable(roomNumber)}
-                />
-              </div>
-            ))}
+            <div className="rSelectRooms">
+              {item.roomNumbers.map((roomNumber) => (
+                <div className="room" key={roomNumber._id} >
+                  <label>{roomNumber.number}</label>
+                  <input
+                    type="checkbox"
+                    value={roomNumber._id}
+                    onChange={handleSelect}
+                    disabled={!isAvailable(roomNumber)}
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         ))}
         <button onClick={handleClick} className="rButton">
