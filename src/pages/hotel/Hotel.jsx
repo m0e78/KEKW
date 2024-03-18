@@ -140,7 +140,7 @@ const { user } = useContext(AuthContext);
                   excellent location score of 9.8!
                 </span>
                 <h2>
-                  <b>${days*data.cheapestPrice*options.room}</b> ({days} nights)
+                  <b>${(days||1)*data.cheapestPrice*options.room}</b> ({days||1} nights)
                 </h2>
                 <button onClick={handleClick}>Reserve or Book Now!</button>
               </div>
