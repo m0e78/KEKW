@@ -1,9 +1,12 @@
-import "./reserve.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircleXmark } from "@fortawesome/free-solid-svg-icons"
+
+import "./reserve.css"
 import useFetch from "../../hooks/useFetch"
 import { useContext, useState } from "react"
 import { SearchContext } from "../../context/SearchContext"
+import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 const Reserve = ({ setOpen, hotelId }) => {
   const [selectedRooms, setSelectedRooms] = useState([])
@@ -15,6 +18,7 @@ const Reserve = ({ setOpen, hotelId }) => {
     const end = new Date(endDate)
 
     const date = new Date(start.getTime())
+
     const dates = []
 
     while (date <= end) {
@@ -44,10 +48,23 @@ const Reserve = ({ setOpen, hotelId }) => {
         : selectedRooms.filter((item) => item !== value)
     )
   }
-  console.log("selectedRooms", selectedRooms)
 
-  const handleClick = () => {}
+  const navigate = useNavigate()
 
+  const handleClick = async () => {
+    try {
+      await Promise.all(
+        selectedRooms.map((roomId) => {
+          const res = axios.put(`/api/rooms/availability/${roomId}`, {
+            dates: alldates,
+          })
+          return res.data
+        })
+      )
+      setOpen(false)
+      navigate("/")
+    } catch (err) {}
+  }
   return (
     <div className="reserve">
       <div className="rContainer">
@@ -56,7 +73,7 @@ const Reserve = ({ setOpen, hotelId }) => {
           className="rClose"
           onClick={() => setOpen(false)}
         />
-        <span>Select you rrooms:</span>
+        <span>Select your rooms:</span>
         {data.map((item) => (
           <div className="rItem" key={item._id}>
             <div className="rInfo">
@@ -89,4 +106,5 @@ const Reserve = ({ setOpen, hotelId }) => {
     </div>
   )
 }
+
 export default Reserve
