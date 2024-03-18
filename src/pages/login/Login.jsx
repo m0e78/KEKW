@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom"
 const Login = () => {
   const [credentials, setCredentials] = useState({
     username: undefined,
-    passwordusername: undefined,
+    password: undefined,
   })
   const { loading, error, dispatch } = useContext(AuthContext)
   const navigate = useNavigate()
