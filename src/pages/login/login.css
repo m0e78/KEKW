@@ -11,7 +11,9 @@
   gap: 10px;
   width: 250px;
 }
-
+.lContainer > label {
+  font-size: 13px;
+}
 .lInput {
   height: 20px;
   padding: 10px;
@@ -32,6 +34,16 @@
   font-family: Helvetica, Arial, sans-serif;
   font-size: 13px;
   text-align: center;
+}
+.lContainer > p {
+  font-weight: bold;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 13px;
+  text-align: center;
+}
+.registerHere {
+  text-decoration: none;
+  color: #006ce4;
 }
 .lButton:disabled {
   background-color: #0071c28c;

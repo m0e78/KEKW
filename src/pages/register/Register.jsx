@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 import "./register.css" // Rename this CSS file to register.css
 import { AuthContext } from "../../context/AuthContext"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const Register = () => {
   const [credentials, setCredentials] = useState({
@@ -35,6 +35,7 @@ const Register = () => {
   return (
     <div className="register">
       <div className="rContainer">
+        <label htmlFor="username">Username</label>
         <input
           type="text"
           placeholder="Enter your username"
@@ -42,6 +43,7 @@ const Register = () => {
           onChange={handleChange}
           className="rInput"
         />
+        <label htmlFor="email">Email</label>
         <input
           type="email"
           placeholder="Enter your email"
@@ -49,6 +51,7 @@ const Register = () => {
           onChange={handleChange}
           className="rInput"
         />
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           placeholder="Enter your password"
@@ -56,6 +59,7 @@ const Register = () => {
           onChange={handleChange}
           className="rInput"
         />
+        <label htmlFor="country">Country</label>
         <input
           type="text"
           placeholder="Enter your country"
@@ -63,6 +67,7 @@ const Register = () => {
           onChange={handleChange}
           className="rInput"
         />
+        <label htmlFor="city">City</label>
         <input
           type="text"
           placeholder="Enter your city"
@@ -70,6 +75,7 @@ const Register = () => {
           onChange={handleChange}
           className="rInput"
         />
+        <label htmlFor="phone">Phone Number</label>
         <input
           type="text"
           placeholder="Enter your phone number"
@@ -80,6 +86,12 @@ const Register = () => {
         <button disabled={loading} onClick={handleClick} className="rButton">
           Register
         </button>
+        <p>
+          Already have an account?{" "}
+          <Link className="loginHere" to="/login">
+            Login
+          </Link>
+        </p>
         {error ? <span>{error.message}</span> : null}
       </div>
     </div>

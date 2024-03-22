@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 import "./login.css"
 import { AuthContext } from "../../context/AuthContext"
 import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -30,6 +30,7 @@ const Login = () => {
   return (
     <div className="login">
       <div className="lContainer">
+        <label htmlFor="username">Username</label>
         <input
           type="text"
           placeholder="Enter your username"
@@ -37,6 +38,8 @@ const Login = () => {
           onChange={handleChange}
           className="lInput"
         />
+        <label htmlFor="password">Password</label>
+
         <input
           type="password"
           placeholder="Enter your password"
@@ -47,6 +50,12 @@ const Login = () => {
         <button disabled={loading} onClick={handleClick} className="lButton">
           Login
         </button>
+        <p>
+          You don't have an account?{" "}
+          <Link className="registerHere" to="/register">
+            Register 
+          </Link>
+        </p>
         {error ? <span>{error.message}</span> : null}
       </div>
     </div>
