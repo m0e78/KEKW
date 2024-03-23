@@ -34,7 +34,7 @@ const Register = () => {
 
   return (
     <div className="register">
-      <div className="rContainer">
+      <div className="rgContainer">
         <label htmlFor="username">Username</label>
         <input
           type="text"
